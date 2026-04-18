@@ -21,7 +21,7 @@ export default async function page() {
           </tr>
         </thead>
         <tbody>
-          {surahs.map((surah) => (
+          {surahs?.map((surah) => (
             <SurahRow key={surah.id} surah={surah} />
           ))}
         </tbody>
