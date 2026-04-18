@@ -9,7 +9,7 @@ export default function SurahLayout({ children }) {
     <div className="relative min-h-screen">
       <button
         onClick={() => setSidebarOpen(true)}
-        className="fixed bottom-5 right-5 bg-green-600 text-white p-4 rounded-full shadow-lg z-40"
+        className="fixed bottom-5 right-5 bg-green-600 p-4 rounded-full shadow-lg z-10 cursor-pointer"
       >
         ⚙️
       </button>

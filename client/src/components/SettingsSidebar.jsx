@@ -24,13 +24,13 @@ export default function SettingsSidebar({ isOpen, onClose }) {
 
   return (
     <div
-      className={`fixed inset-y-0 right-0 z-[100] w-72 shadow-2xl transform ${
+      className={`fixed inset-y-0 right-0 w-72 shadow-2xl transform ${
         isOpen ? "translate-x-0" : "translate-x-full"
-      } transition-transform duration-300 ease-in-out p-6 `}
+      } transition-transform duration-300 ease-in-out p-6 z-50 bg-white`}
     >
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-xl font-bold">Settings</h2>
-        <button onClick={onClose} className="p-2 rounded-full ">
+        <button onClick={onClose} className="p-2 rounded-full cursor-pointer">
           ✕
         </button>
       </div>
@@ -52,12 +52,12 @@ export default function SettingsSidebar({ isOpen, onClose }) {
         {/* Font Size Sliders */}
         <div>
           <label className="block mb-2 font-medium">
-            Arabic Size ({arabicFontSize}px)
+            Arabic Text Size ({arabicFontSize}px)
           </label>
           <input
             type="range"
             min="20"
-            max="60"
+            max="40"
             value={arabicFontSize}
             onChange={(e) => setArabicFontSize(e.target.value)}
             className="w-full cursor-pointer"
@@ -66,11 +66,11 @@ export default function SettingsSidebar({ isOpen, onClose }) {
 
         <div>
           <label className="block mb-2 font-medium">
-            Translation Size ({translationFontSize}px)
+            English Text Size ({translationFontSize}px)
           </label>
           <input
             type="range"
-            min="12"
+            min="16"
             max="30"
             value={translationFontSize}
             onChange={(e) => setTranslationFontSize(e.target.value)}

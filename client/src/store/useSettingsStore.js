@@ -6,7 +6,7 @@ export const useSettingsStore = create(
     (set) => ({
       arabicFont: 'font-amiri', // Default class
       arabicFontSize: 32,
-      translationFontSize: 16,
+      translationFontSize: 20,
       setArabicFont: (font) => set({ arabicFont: font }),
       setArabicFontSize: (size) => set({ arabicFontSize: size }),
       setTranslationFontSize: (size) => set({ translationFontSize: size }),
