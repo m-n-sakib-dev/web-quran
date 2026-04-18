@@ -8,5 +8,7 @@ router.get('/hello', (req, res) => {
 
 router.get('/surahs', quranController.getSurahList);
 router.get('/surah/:id', quranController.getSurahDetails);
+router.get('/ayah/:text',quranController.serchAyahFromTranslation )
+router.get('/surah/:id/ayah/:text',quranController.serchAyahFromSurah )
 
 module.exports = router;
