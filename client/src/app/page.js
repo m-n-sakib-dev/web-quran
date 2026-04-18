@@ -1,14 +1,15 @@
 "use client";
 import Image from "next/image";
-
+import { API_BASE_URL } from "@/utils/api";
 import { useEffect, useState } from "react";
 
 export default function Home() {
 const [data, setData] = useState(null);
 
   useEffect(() => {
+console.log(API_BASE_URL);
 
-    fetch("/api/hello")
+    fetch(`${API_BASE_URL}/api/hello`)
       .then((res) => res.json())
       .then((data) => setData(data.message))
       .catch((err) => console.error("Error:", err));
