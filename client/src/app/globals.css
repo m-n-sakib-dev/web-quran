@@ -9,13 +9,11 @@
   --foreground: #171717;
 }
 
-/* ২. ডার্ক থিম - যখন html ট্যাগে .dark ক্লাস থাকবে */
 .dark {
   --background: #0a0a0a;
   --foreground: #ededed;
 }
 
-/* ৩. বডিতে ভ্যারিয়েবল অ্যাপ্লাই */
 body {
   background-color: var(--background);
   color: var(--foreground);
