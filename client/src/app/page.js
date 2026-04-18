@@ -7,8 +7,8 @@ export default function Home() {
 const [data, setData] = useState(null);
 
   useEffect(() => {
-    // এখানে আপনার ব্যাকএন্ডের পুরো ইউআরএল দিতে হবে
-    fetch("http://localhost:3001/api/hello")
+
+    fetch("/api/hello")
       .then((res) => res.json())
       .then((data) => setData(data.message))
       .catch((err) => console.error("Error:", err));
