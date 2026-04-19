@@ -12,9 +12,9 @@ export default function SurahRow({ surah }) {
   return (
     <tr
       onClick={handleRowClick}
-      className="hover:bg-gray-100 cursor-pointer transition-colors dark:hover:bg-gray-100"
+      className="hover:bg-gray-200 cursor-pointer transition-colors "
     >
-      <td>
+      <td className="py-1">
         <SettingsWrapper type="translation">{surah.number}</SettingsWrapper>
       </td>
       <td dir="rtl">

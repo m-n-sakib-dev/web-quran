@@ -20,7 +20,7 @@ export default function LandingPage() {
         </h1>
 
         <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10 leading-relaxed">
-          Explore, read, and understand the divine message with our modern, 
+          Explore, read, and understand the divine message with our modern,
           highly customizable interface. Built for clarity and peace.
         </p>
 
@@ -31,7 +31,7 @@ export default function LandingPage() {
           >
             Read Surah List
           </Link>
-          
+
         </div>
 
         {/* Feature Highlights */}
@@ -51,13 +51,13 @@ export default function LandingPage() {
         </div>
       </main>
 
-      <footer className="absolute bottom-8 text-sm text-gray-500">
+      <footer className="md:absolute md:bottom-8 text-sm text-gray-500 mt-6">
         © {new Date().getFullYear()} Web Quran Project by <Link
-            href="https://m-n-sakib-dev.github.io/"
-            className="text-blue-700 "
-          >
-            m_n_sakib
-          </Link>
+          href="https://m-n-sakib-dev.github.io/"
+          className="text-blue-700 "
+        >
+          m_n_sakib
+        </Link>
       </footer>
     </div>
   );

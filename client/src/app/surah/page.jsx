@@ -11,12 +11,11 @@ async function getSurahs() {
 export default async function page() {
   const surahs = await getSurahs();
   return (
-    <div className="overflow-x-auto ">
-      <table className="table text-center">
-        {/* head */}
+    <div className="w-full max-w-screen">
+      <table className=" w-full text-center">
         <thead>
           <tr className="bg-gray-300 text-black">
-            <th>Surah Number</th>
+            <th className="py-2">Surah Number</th>
             <th>Surah Name (Arabic)</th>
             <th>Surah Name (English)</th>
           </tr>
