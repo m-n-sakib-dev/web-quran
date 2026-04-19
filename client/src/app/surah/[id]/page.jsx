@@ -21,16 +21,17 @@ export default async function SurahDetailPage({ params }) {
         <div className="text-center text-[34px]">{surah.info.name_ar}</div>
         <div className="text-center text-[24px]">{surah.info.name_en}</div>
       </div>
-      {surah.ayahs.map((ayah) => (
+      {(surah.ayahs || []).map((ayah) => (
         <div className="p-4 border-t" key={ayah.number_in_surah}>
           <p className="text-right">
             <SettingsWrapper type="arabic">{ayah.text}</SettingsWrapper>
           </p>
-          <p className=" mt-2">
+          <p className="mt-2">
             <SettingsWrapper type="translation">{ayah.data}</SettingsWrapper>
           </p>
         </div>
       ))}
+
     </div>
   );
 }
