@@ -3,7 +3,7 @@
 A modern, full-stack Quranic application built with **Next.js 15**, **Express.js**, and **MySQL**. This project was developed as a technical assessment, focusing on performance (SSG), state management (Zustand), and professional UI/UX standards.
 
 ## 🚀 Live Demo
-**Frontend & API:** [https://vercel.app](https://vercel.app)
+**Frontend & API:** [Web Quran](https://web-quran-one.vercel.app/)
 
 ---
 
