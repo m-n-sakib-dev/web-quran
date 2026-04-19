@@ -4,7 +4,7 @@ A modern, full-stack Quranic application built with **Next.js 15**, **Express.js
 
 ## 🚀 Live Demo
 
-**Frontend & API:** [https://vercel.app](https://vercel.app)
+**Frontend & API:** [Web Quran](https://web-quran-one.vercel.app/)
 
 ---
 

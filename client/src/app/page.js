@@ -51,7 +51,7 @@ export default function LandingPage() {
         </div>
       </main>
 
-      <footer className="md:absolute md:bottom-8 text-sm text-gray-500 mt-6">
+      <footer className="md:absolute md:-bottom-4 text-sm text-gray-500 mt-6 ">
         © {new Date().getFullYear()} Web Quran Project by <Link
           href="https://m-n-sakib-dev.github.io/"
           className="text-blue-700 "
