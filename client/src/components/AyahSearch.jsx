@@ -15,7 +15,7 @@ export default function AyahSearch({ info, ayahs }) {
                 <input
                     type="text"
                     placeholder="Search in translation..."
-                    className="w-full p-3 border rounded-xl outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full p-3 px-6 border rounded-4xl outline-none focus:ring-2 focus:ring-blue-400"
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
             </div>
