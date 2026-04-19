@@ -14,7 +14,6 @@ async function getSurahDetails(id) {
 export default async function SurahDetailPage({ params }) {
   const { id } = await params;
   const surah = await getSurahDetails(id);
-  console.log(surah);
 
   return (
     <div className="max-w-250 mx-auto rounded-2xl overflow-hidden border">
