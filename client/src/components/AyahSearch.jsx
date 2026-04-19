@@ -22,7 +22,7 @@ export default function AyahSearch({ info, ayahs }) {
             <div className="rounded-2xl overflow-hidden border">
 
                 <div className="bg-gray-400">
-                    <div className="text-center text-[34px]">{info.name_ar}</div>
+                    <div className="text-center text-[34px] font-noto">{info.name_ar}</div>
                     <div className="text-center text-[24px]">{info.name_en}</div>
                 </div>
 

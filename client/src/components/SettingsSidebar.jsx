@@ -24,9 +24,8 @@ export default function SettingsSidebar({ isOpen, onClose }) {
 
   return (
     <div
-      className={`fixed inset-y-0 right-0 w-72 shadow-2xl transform ${
-        isOpen ? "translate-x-0" : "translate-x-full"
-      } transition-transform duration-300 ease-in-out p-6 z-50 bg-white`}
+      className={`fixed inset-y-0 right-0 w-72 shadow-2xl transform ${isOpen ? "translate-x-0" : "translate-x-full"
+        } transition-transform duration-300 ease-in-out p-6 z-50 bg-white`}
     >
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-xl font-bold">Settings</h2>
@@ -44,7 +43,7 @@ export default function SettingsSidebar({ isOpen, onClose }) {
             onChange={(e) => setArabicFont(e.target.value)}
             className="w-full p-2 border rounded "
           >
-            <option value="font-amiri">Amiri (Classic)</option>
+            <option value="">Amiri (Classic)</option>
             <option value="font-noto">Noto Naskh (Modern)</option>
           </select>
         </div>
