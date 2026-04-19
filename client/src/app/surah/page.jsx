@@ -4,6 +4,7 @@ import SurahRow from "@/components/SurahRow";
 
 async function getSurahs() {
   const res = await fetch(`${API_BASE_URL}/api/surahs`);
+  console.log(API_BASE_URL);
   return res.json();
 }
 
