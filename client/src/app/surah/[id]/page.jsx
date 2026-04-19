@@ -4,9 +4,7 @@ import SurahRow from "@/components/SurahRow";
 import SettingsWrapper from "@/components/SettingsWrapper";
 
 async function getSurahDetails(id) {
-  const res = await fetch(`${API_BASE_URL}/api/surah/${id}`, {
-    next: { revalidate: 3600 },
-  });
+  const res = await fetch(`${API_BASE_URL}/api/surah/${id}`);
 
   return res.json();
 }
