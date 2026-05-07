@@ -1,9 +1,26 @@
 "use client";
-import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 import SettingsWrapper from "@/components/SettingsWrapper";
 
-export default function AyahSearch({ info, ayahs }) {
-    const [searchTerm, setSearchTerm] = useState("");
+// 1. Define the interfaces for your data
+interface Ayah {
+    number_in_surah: number;
+    text: string;  // Arabic text
+    data: string;  // Translation text
+}
+
+interface SurahInfo {
+    name_ar: string;
+    name_en: string;
+}
+
+interface AyahSearchProps {
+    info: SurahInfo;
+    ayahs: Ayah[];
+}
+
+export default function AyahSearch({ info, ayahs }: AyahSearchProps) {
+    const [searchTerm, setSearchTerm] = useState<string>("");
 
     const filteredAyahs = ayahs.filter((ayah) =>
         ayah.data.toLowerCase().includes(searchTerm.toLowerCase())
@@ -16,11 +33,10 @@ export default function AyahSearch({ info, ayahs }) {
                     type="text"
                     placeholder="Search in translation..."
                     className="w-full p-3 px-6 border rounded-4xl outline-none focus:ring-2 focus:ring-blue-400"
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
                 />
             </div>
             <div className="rounded-2xl overflow-hidden border">
-
                 <div className="bg-gray-400">
                     <div className="text-center text-[34px] font-noto">{info.name_ar}</div>
                     <div className="text-center text-[24px]">{info.name_en}</div>

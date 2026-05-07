@@ -10,7 +10,7 @@ export default function LandingPage() {
       </div>
 
       <main className="text-center px-6 max-w-3xl">
-        {/* Arabic Calligraphy Style Text (Optional) */}
+        {/* Arabic Calligraphy Style Text */}
         <h2 className="font-amiri text-4xl md:text-6xl text-green-600 dark:text-green-400 mb-6" dir="rtl">
           بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
         </h2>
@@ -31,7 +31,6 @@ export default function LandingPage() {
           >
             Read Surah List
           </Link>
-
         </div>
 
         {/* Feature Highlights */}
@@ -42,7 +41,7 @@ export default function LandingPage() {
           </div>
           <div>
             <h3 className="font-bold text-xl mb-2">Custom Font Size</h3>
-            <p className="text-sm text-gray-500">Choose your desired font size to read quran easily</p>
+            <p className="text-sm text-gray-500">Choose your desired font size to read Quran easily.</p>
           </div>
           <div>
             <h3 className="font-bold text-xl mb-2">Fully Responsive</h3>
@@ -51,10 +50,11 @@ export default function LandingPage() {
         </div>
       </main>
 
-      <footer className="md:absolute md:-bottom-4 text-sm text-gray-500 mt-6 ">
-        © {new Date().getFullYear()} Web Quran Project by <Link
+      <footer className="md:absolute md:bottom-4 text-sm text-gray-500 mt-6 ">
+        © {new Date().getFullYear()} Web Quran Project by{" "}
+        <Link
           href="https://m-n-sakib-dev.github.io/"
-          className="text-blue-700 "
+          className="text-blue-700 hover:underline"
         >
           m_n_sakib
         </Link>

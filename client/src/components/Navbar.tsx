@@ -4,7 +4,7 @@ import Link from 'next/link';
 import SettingsSidebar from "@/components/SettingsSidebar";
 
 export default function Navbar() {
-    const [isSidebarOpen, setSidebarOpen] = useState(false);
+    const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
     return (
         <>

@@ -1,6 +1,7 @@
+import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar"; // Navbar ইমপোর্ট করুন
+import Navbar from "@/components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,18 +13,22 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Quran App",
   description: "Read and search Surahs",
 };
 
-export default function RootLayout({ children }) {
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col pt-16"> {/* pt-16 যোগ করা হয়েছে */}
+      <body className="min-h-full flex flex-col pt-16">
         <Navbar />
         <main className="flex-grow p-4 md:px-8 md:py-4">
           {children}
@@ -32,4 +37,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-
