@@ -1,16 +1,28 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-export const useSettingsStore = create(
+interface SettingsState {
+  arabicFont: string;
+  arabicFontSize: number;
+  translationFontSize: number;
+  setArabicFont: (font: string) => void;
+  setArabicFontSize: (size: number) => void;
+  setTranslationFontSize: (size: number) => void;
+}
+
+export const useSettingsStore = create<SettingsState>()(
   persist(
     (set) => ({
-      arabicFont: 'font-noto', // Default class
+      arabicFont: 'font-noto',
       arabicFontSize: 32,
       translationFontSize: 20,
       setArabicFont: (font) => set({ arabicFont: font }),
       setArabicFontSize: (size) => set({ arabicFontSize: size }),
       setTranslationFontSize: (size) => set({ translationFontSize: size }),
     }),
-    { name: 'quran-settings' }
+    { 
+      name: 'quran-settings' 
+    }
   )
 );
+

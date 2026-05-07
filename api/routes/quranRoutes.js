@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const quranController = require('../controllers/quranController');
 
-router.get('/hello', (req, res) => {
+router.get('', (req, res) => {
   res.json({ message: "Hello from quran-backend!" });
 });
 
