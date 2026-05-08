@@ -5,7 +5,7 @@ import SettingsSidebar from "@/components/SettingsSidebar";
 import { useEffect } from "react";
 
 export default function Navbar() {
-    const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
+    const [isRightSidebarOpen, setRightSidebarOpen] = useState<boolean>(false);
     const [isLargeScreen, setIsLargeScreen] = useState<boolean>(false);
     useEffect(() => {
         setIsLargeScreen(window.innerWidth >= 1024);
@@ -25,9 +25,9 @@ export default function Navbar() {
                         <Link href="/surah" className="hover:text-green-600 transition-colors">Surah</Link>
                     </div>
 
-                    <div className="flex items-center">
+                    <div className="lg:hidden">
                         <button
-                            onClick={() => setSidebarOpen(true)}
+                            onClick={() => setRightSidebarOpen(true)}
                             className="bg-gray-100 hover:bg-gray-200 p-2 rounded-lg transition-all cursor-pointer text-xl"
                             title="Settings"
                         >
@@ -39,11 +39,11 @@ export default function Navbar() {
 
             {/* Settings Sidebar */}
             {!isLargeScreen && (<div
-                className={`fixed inset-y-0 right-0 w-72 shadow-2xl transform ${isSidebarOpen ? "translate-x-0" : "translate-x-full"
+                className={`fixed inset-y-0 right-0 w-72 shadow-2xl transform ${isRightSidebarOpen ? "translate-x-0" : "translate-x-full"
                     } transition-transform duration-300 ease-in-out p-6 z-50 bg-gray-300`}
             >
                 <SettingsSidebar
-                    onClose={() => setSidebarOpen(false)}
+                    onClose={() => setRightSidebarOpen(false)}
                 />
             </div>)}
         </>
