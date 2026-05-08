@@ -38,11 +38,8 @@ export default function AyahSearch({ info, ayahs, id }: AyahSearchProps) {
         const audio = new Audio(url);
         audio.play();
     };
-
-    const playSurahAudio = () => {
-        playAudio(ayahs[0].audio_link);
-    };
-    const handlePlayPause = (url: string) => {
+    const handlePlayPause = (number_in_surah: number) => {
+        const url = ayahs[number_in_surah - 1].audio_link;
         if (currentPlayingUrl !== url) {
             if (audioRef.current) {
                 audioRef.current.pause();
@@ -51,7 +48,7 @@ export default function AyahSearch({ info, ayahs, id }: AyahSearchProps) {
             audioRef.current = new Audio(url);
             audioRef.current.play();
             setCurrentPlayingUrl(url);
-            audioRef.current.onended = () => setCurrentPlayingUrl(null);
+            audioRef.current.onended = () => handlePlayPause(number_in_surah + 1);
         }
         else {
             audioRef.current.pause();
@@ -78,14 +75,14 @@ export default function AyahSearch({ info, ayahs, id }: AyahSearchProps) {
                     <div className="w-1/3 px-8 my-auto opacity-50"><img className="h-20" src="https://quranmazid.com/_next/static/media/bismillah.2a2f3d14.svg" alt="" /></div>
                 </div>
 
-                <div className="rounded-2xl overflow-hidden mt-6">
+                <div className="mt-6">
                     {filteredAyahs.length > 0 ? (
                         filteredAyahs.map((ayah) => (
-                            <div className="py-4 border-b border-gray-200 flex" key={ayah.number_in_surah}>
+                            <div className={`py-4 border-b border-gray-200 flex ${ayah.audio_link == currentPlayingUrl ? "bg-gray-200" : ""}  px-4`} key={ayah.number_in_surah}>
                                 <div className="">
                                     <p className="text-primary1">{id}:{ayah.number_in_surah}</p>
                                     <button
-                                        onClick={() => handlePlayPause(ayah.audio_link)}
+                                        onClick={() => handlePlayPause(ayah.number_in_surah)}
                                         className="cursor-pointer transition"
                                     >
                                         {currentPlayingUrl === ayah.audio_link ? <Icon

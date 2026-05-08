@@ -32,7 +32,7 @@ export default async function SurahList() {
     const surahs = await getSurahs();
 
     return (
-        <div className="w-full h-full">
+        <div className="w-full h-full pe-2">
             {Array.isArray(surahs) &&
                 surahs.map((surah) => (
                     <SurahRow key={surah.id} surah={surah} />

@@ -27,7 +27,7 @@ export default function SettingsSidebar({ onClose }: SettingsSidebarProps) {
 
   return (
     <div
-      className=""
+      className="px-6"
     >
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-xl font-bold">Font Settings</h2>
