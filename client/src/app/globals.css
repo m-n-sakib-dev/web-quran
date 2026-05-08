@@ -7,11 +7,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #43A047;
 }
 
 .dark {
   --background: #0a0a0a;
   --foreground: #ededed;
+  --primary: #43A047;
 }
 
 body {
@@ -23,6 +25,7 @@ body {
 /* Tailwind v4 theme mapping */
 @theme {
   --color-background: var(--background);
+  --color-primary1: var(--primary);
   --color-foreground: var(--foreground);
 }
 

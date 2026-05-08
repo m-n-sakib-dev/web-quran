@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState, ChangeEvent } from "react";
 
 interface SettingsSidebarProps {
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 export default function SettingsSidebar({ onClose }: SettingsSidebarProps) {

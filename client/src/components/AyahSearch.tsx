@@ -1,5 +1,5 @@
 "use client";
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useRef } from "react";
 import SettingsWrapper from "@/components/SettingsWrapper";
 
 // 1. Define the interfaces for your data
@@ -7,28 +7,58 @@ interface Ayah {
     number_in_surah: number;
     text: string;  // Arabic text
     data: string;  // Translation text
+    audio_link: string;
 }
 
 interface SurahInfo {
     name_ar: string;
     name_en: string;
+    type: string;
 }
 
 interface AyahSearchProps {
     info: SurahInfo;
     ayahs: Ayah[];
+    id: number;
 }
 
-export default function AyahSearch({ info, ayahs }: AyahSearchProps) {
+export default function AyahSearch({ info, ayahs, id }: AyahSearchProps) {
     const [searchTerm, setSearchTerm] = useState<string>("");
+    const total_ayahs = ayahs.length;
+
+    const [currentPlayingUrl, setCurrentPlayingUrl] = useState<string | null>(null);
+    const audioRef = useRef<HTMLAudioElement | null>(null);
 
     const filteredAyahs = ayahs.filter((ayah) =>
         ayah.data.toLowerCase().includes(searchTerm.toLowerCase())
     );
+    const playAudio = (url: string) => {
+        const audio = new Audio(url);
+        audio.play();
+    };
 
+    const playSurahAudio = () => {
+        playAudio(ayahs[0].audio_link);
+    };
+    const handlePlayPause = (url: string) => {
+        if (currentPlayingUrl !== url) {
+            if (audioRef.current) {
+                audioRef.current.pause();
+            }
+
+            audioRef.current = new Audio(url);
+            audioRef.current.play();
+            setCurrentPlayingUrl(url);
+            audioRef.current.onended = () => setCurrentPlayingUrl(null);
+        }
+        else {
+            audioRef.current.pause();
+            setCurrentPlayingUrl(null);
+        }
+    };
     return (
         <>
-            <div className="mb-4">
+            <div className="mb-4 hidden">
                 <input
                     type="text"
                     placeholder="Search in translation..."
@@ -36,22 +66,38 @@ export default function AyahSearch({ info, ayahs }: AyahSearchProps) {
                     onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
                 />
             </div>
-            <div className="rounded-2xl overflow-hidden border">
-                <div className="bg-gray-400">
-                    <div className="text-center text-[34px] font-noto">{info.name_ar}</div>
-                    <div className="text-center text-[24px]">{info.name_en}</div>
+            <div className="overflow-hidden">
+                <div className="flex justify-between">
+                    <div className="w-1/3"><img className="h-20" src="https://quranmazid.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmadinah.d27df76f.png&w=750&q=75" alt="" /></div>
+                    <div className="text-center">
+                        <div className="text-center text-[34px] ">{info.name_en}</div>
+                        <div className="text-center text-md text-gray-500">Ayah-{total_ayahs}, {info.type}</div>
+                    </div>
+                    <div className="w-1/3 px-8 my-auto opacity-50"><img className="h-20" src="https://quranmazid.com/_next/static/media/bismillah.2a2f3d14.svg" alt="" /></div>
                 </div>
 
-                <div className="rounded-2xl overflow-hidden">
+                <div className="rounded-2xl overflow-hidden mt-6">
                     {filteredAyahs.length > 0 ? (
                         filteredAyahs.map((ayah) => (
-                            <div className="p-4 border-t" key={ayah.number_in_surah}>
-                                <p className="text-right">
-                                    <SettingsWrapper type="arabic">{ayah.text}</SettingsWrapper>
-                                </p>
-                                <p className="mt-2">
-                                    <SettingsWrapper type="translation">{ayah.data}</SettingsWrapper>
-                                </p>
+                            <div className="py-4 border-b border-gray-200 flex" key={ayah.number_in_surah}>
+                                <div className="">
+                                    <p className="text-primary1">{id}:{ayah.number_in_surah}</p>
+                                    <button
+                                        onClick={() => handlePlayPause(ayah.audio_link)}
+                                        className="cursor-pointer transition"
+                                    >
+                                        {currentPlayingUrl === ayah.audio_link ? '⏸️' : '▶️'}
+                                    </button>
+                                </div>
+                                <div className="flex-grow px-4">
+                                    <p className="text-right">
+                                        <SettingsWrapper type="arabic">{ayah.text}</SettingsWrapper>
+                                    </p>
+                                    <p className="uppercase text-sm text-gray-500 font-semibold mt-6">Saheeh International</p>
+                                    <p className="mt-1">
+                                        <SettingsWrapper type="translation">{ayah.data}</SettingsWrapper>
+                                    </p>
+                                </div>
                             </div>
                         ))
                     ) : (

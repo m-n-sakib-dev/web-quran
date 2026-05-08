@@ -2,7 +2,9 @@
 import { useState } from "react";
 import Link from 'next/link';
 import SettingsSidebar from "@/components/SettingsSidebar";
+import SurahSideBar from "@/components/SurahSideBar";
 import { useEffect } from "react";
+
 
 export default function Navbar() {
     const [isRightSidebarOpen, setRightSidebarOpen] = useState<boolean>(false);
@@ -32,7 +34,7 @@ export default function Navbar() {
 
                     <div className="flex gap-6 absolute left-1/2 -translate-x-1/2 font-medium">
                         <Link href="/" className="hover:text-green-600 transition-colors">Home</Link>
-                        <Link href="/surah" className="hover:text-green-600 transition-colors">Surah</Link>
+                        <Link href="/1" className="hover:text-green-600 transition-colors">Surah</Link>
                     </div>
 
                     <div className="lg:hidden">
@@ -53,9 +55,6 @@ export default function Navbar() {
                     } transition-transform duration-300 ease-in-out p-6 z-50 bg-gray-300`}
             >
 
-                <SettingsSidebar
-                    onClose={() => setLeftSidebarOpen(false)}
-                />
             </div>)}
 
             {!isLargeScreen && (<div

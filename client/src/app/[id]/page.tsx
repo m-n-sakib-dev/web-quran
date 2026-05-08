@@ -1,4 +1,4 @@
-import React from "react";
+
 import { API_BASE_URL } from "@/utils/api";
 import AyahSearch from "@/components/AyahSearch";
 
@@ -7,11 +7,13 @@ interface Ayah {
   number_in_surah: number;
   text: string;
   data: string;
+  audio_link: string;
 }
 
 interface SurahInfo {
   name_ar: string;
   name_en: string;
+  type: string;
 }
 
 interface SurahDetails {
@@ -32,6 +34,7 @@ export async function generateStaticParams() {
 
 async function getSurahDetails(id: string): Promise<SurahDetails | null> {
   try {
+
     const res = await fetch(`${API_BASE_URL}/api/surah/${id}`);
     if (!res.ok) return null;
     return res.json();
@@ -56,7 +59,7 @@ export default async function SurahDetailPage({ params }: PageProps) {
 
   return (
     <div className="">
-      <AyahSearch info={surah.info} ayahs={surah.ayahs || []} />
+      <AyahSearch info={surah.info} ayahs={surah.ayahs || []} id={Number(id)} />
     </div>
   );
 }
