@@ -48,7 +48,8 @@ export default function AyahSearch({ info, ayahs, id }: AyahSearchProps) {
             audioRef.current = new Audio(url);
             audioRef.current.play();
             setCurrentPlayingUrl(url);
-            audioRef.current.onended = () => handlePlayPause(number_in_surah + 1);
+            if (number_in_surah + 1 < total_ayahs) audioRef.current.onended = () => handlePlayPause(number_in_surah + 1);
+            else audioRef.current.onended = () => setCurrentPlayingUrl(null);
         }
         else {
             audioRef.current.pause();
@@ -66,8 +67,12 @@ export default function AyahSearch({ info, ayahs, id }: AyahSearchProps) {
                 />
             </div>
             <div className="overflow-hidden">
-                <div className="flex justify-between">
-                    <div className="w-1/3"><img className="h-20" src="https://quranmazid.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmadinah.d27df76f.png&w=750&q=75" alt="" /></div>
+                <div className="flex justify-between px-8">
+                    <div className="w-1/3">
+
+                        {info.type == "Madinah" ? <img className="h-20" src="https://quranmazid.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmadinah.d27df76f.png&w=750&q=75" alt="" />
+                            : <img className="h-20" src="https://quranmazid.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmakkah.a06c3e3e.png&w=828&q=75" alt="" />}
+                    </div>
                     <div className="text-center">
                         <div className="text-center text-[34px] ">{info.name_en}</div>
                         <div className="text-center text-md text-gray-500">Ayah-{total_ayahs}, {info.type}</div>

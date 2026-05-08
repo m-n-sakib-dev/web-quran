@@ -7,6 +7,7 @@ interface SettingsSidebarProps {
   onClose?: () => void;
 }
 
+
 export default function SettingsSidebar({ onClose }: SettingsSidebarProps) {
   const {
     arabicFont,
