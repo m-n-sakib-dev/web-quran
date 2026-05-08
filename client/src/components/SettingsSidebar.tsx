@@ -61,7 +61,7 @@ export default function SettingsSidebar({ onClose }: SettingsSidebarProps) {
             max="50"
             value={arabicFontSize}
             onChange={(e: ChangeEvent<HTMLInputElement>) => setArabicFontSize(Number(e.target.value))}
-            className="w-full cursor-pointer"
+            className="w-full cursor-pointer accent-primary1"
           />
         </div>
 
@@ -75,7 +75,7 @@ export default function SettingsSidebar({ onClose }: SettingsSidebarProps) {
             max="30"
             value={translationFontSize}
             onChange={(e: ChangeEvent<HTMLInputElement>) => setTranslationFontSize(Number(e.target.value))}
-            className="w-full cursor-pointer"
+            className="w-full cursor-pointer accent-primary1"
           />
         </div>
       </div>

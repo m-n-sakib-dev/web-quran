@@ -16,6 +16,8 @@
     "zustand": "^5.0.12"
   },
   "devDependencies": {
+    "@iconify-json/material-symbols-light": "^1.2.70",
+    "@iconify/react": "^6.0.2",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^25.6.1",
     "@types/react": "^19.2.14",

@@ -1,6 +1,8 @@
 "use client";
 import { useState, ChangeEvent, useRef } from "react";
 import SettingsWrapper from "@/components/SettingsWrapper";
+import { Icon } from '@iconify/react';
+
 
 // 1. Define the interfaces for your data
 interface Ayah {
@@ -86,7 +88,13 @@ export default function AyahSearch({ info, ayahs, id }: AyahSearchProps) {
                                         onClick={() => handlePlayPause(ayah.audio_link)}
                                         className="cursor-pointer transition"
                                     >
-                                        {currentPlayingUrl === ayah.audio_link ? '⏸️' : '▶️'}
+                                        {currentPlayingUrl === ayah.audio_link ? <Icon
+                                            icon="material-symbols-light:pause-outline-rounded"
+                                            className="text-2xl text-green-600"
+                                        /> : <Icon
+                                            icon="material-symbols-light:play-arrow-outline-rounded"
+                                            className="text-4xl -ms-2 text-green-600"
+                                        />}
                                     </button>
                                 </div>
                                 <div className="flex-grow px-4">
