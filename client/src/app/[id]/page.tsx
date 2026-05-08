@@ -55,7 +55,7 @@ export default async function SurahDetailPage({ params }: PageProps) {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="">
       <AyahSearch info={surah.info} ayahs={surah.ayahs || []} />
     </div>
   );

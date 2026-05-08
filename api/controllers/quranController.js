@@ -12,10 +12,12 @@ exports.getSurahList = async (req, res) => {
 exports.getSurahDetails = async (req, res) => {
     const { id } = req.params;
     try {
-        const [rows] = await db.query('SELECT  a.number_in_surah,a.text, ae.data from ayahs a , ayah_edition ae  where  a.id= ae.ayah_id and a.surah_id =? and ae.edition_id=12', [id]);
-        const [data] = await db.query('SELECT  number,name_ar, name_en FROM surahs where id=?',[id]);
+        const [rows] = await db.query(`SELECT  a.number_in_surah,a.text, ae.data, ae2.data as audio_link 
+            from ayahs a , ayah_edition ae , ayah_edition ae2   
+            where  a.id= ae.ayah_id and ae.edition_id=12 and a.surah_id =? and a.id=ae2.ayah_id and ae2.edition_id = 112`, [id]);
+        const [data] = await db.query('SELECT  number,name_ar, name_en,name_en_translation,type FROM surahs where id=?',[id]);
         res.status(200).json({
-        info: data[0], // data is an array, so we take the first element
+        info: data[0], 
         ayahs: rows
     });
     } catch (error) {

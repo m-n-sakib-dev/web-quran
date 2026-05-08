@@ -2,27 +2,29 @@
 import { useState } from "react";
 import Link from 'next/link';
 import SettingsSidebar from "@/components/SettingsSidebar";
+import { useEffect } from "react";
 
 export default function Navbar() {
     const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
+    const [isLargeScreen, setIsLargeScreen] = useState<boolean>(false);
+    useEffect(() => {
+        setIsLargeScreen(window.innerWidth >= 1024);
+    }, []);
 
     return (
         <>
-            <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b">
+            <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md">
                 <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
 
-                    {/* Logo (Left) */}
                     <Link href="/" className="font-bold text-lg md:text-xl flex-shrink-0">
                         Web Quran
                     </Link>
 
-                    {/* Menu Items (Center) */}
                     <div className="flex gap-6 absolute left-1/2 -translate-x-1/2 font-medium">
                         <Link href="/" className="hover:text-green-600 transition-colors">Home</Link>
                         <Link href="/surah" className="hover:text-green-600 transition-colors">Surah</Link>
                     </div>
 
-                    {/* Settings Button (Right) */}
                     <div className="flex items-center">
                         <button
                             onClick={() => setSidebarOpen(true)}
@@ -36,10 +38,14 @@ export default function Navbar() {
             </nav>
 
             {/* Settings Sidebar */}
-            <SettingsSidebar
-                isOpen={isSidebarOpen}
-                onClose={() => setSidebarOpen(false)}
-            />
+            {!isLargeScreen && (<div
+                className={`fixed inset-y-0 right-0 w-72 shadow-2xl transform ${isSidebarOpen ? "translate-x-0" : "translate-x-full"
+                    } transition-transform duration-300 ease-in-out p-6 z-50 bg-gray-300`}
+            >
+                <SettingsSidebar
+                    onClose={() => setSidebarOpen(false)}
+                />
+            </div>)}
         </>
     );
 }

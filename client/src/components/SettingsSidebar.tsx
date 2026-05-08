@@ -4,11 +4,10 @@ import { useTheme } from "next-themes";
 import { useEffect, useState, ChangeEvent } from "react";
 
 interface SettingsSidebarProps {
-  isOpen: boolean;
   onClose: () => void;
 }
 
-export default function SettingsSidebar({ isOpen, onClose }: SettingsSidebarProps) {
+export default function SettingsSidebar({ onClose }: SettingsSidebarProps) {
   const {
     arabicFont,
     setArabicFont,
@@ -18,7 +17,6 @@ export default function SettingsSidebar({ isOpen, onClose }: SettingsSidebarProp
     setTranslationFontSize,
   } = useSettingsStore();
 
-  const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
@@ -29,13 +27,11 @@ export default function SettingsSidebar({ isOpen, onClose }: SettingsSidebarProp
 
   return (
     <div
-      className={`fixed inset-y-0 right-0 w-72 shadow-2xl transform ${
-        isOpen ? "translate-x-0" : "translate-x-full"
-      } transition-transform duration-300 ease-in-out p-6 z-50 bg-white`}
+      className=""
     >
       <div className="flex justify-between items-center mb-8">
-        <h2 className="text-xl font-bold">Settings</h2>
-        <button onClick={onClose} className="p-2 rounded-full cursor-pointer" type="button">
+        <h2 className="text-xl font-bold">Font Settings</h2>
+        <button onClick={onClose} className="p-2 lg:hidden rounded-full cursor-pointer" type="button">
           ✕
         </button>
       </div>
@@ -57,12 +53,12 @@ export default function SettingsSidebar({ isOpen, onClose }: SettingsSidebarProp
         {/* Font Size Sliders - Note the Number() conversion */}
         <div>
           <label className="block mb-2 font-medium">
-            Arabic Text Size ({arabicFontSize}px)
+            Arabic Font Size ({arabicFontSize}px)
           </label>
           <input
             type="range"
             min="20"
-            max="40"
+            max="50"
             value={arabicFontSize}
             onChange={(e: ChangeEvent<HTMLInputElement>) => setArabicFontSize(Number(e.target.value))}
             className="w-full cursor-pointer"
@@ -71,7 +67,7 @@ export default function SettingsSidebar({ isOpen, onClose }: SettingsSidebarProp
 
         <div>
           <label className="block mb-2 font-medium">
-            English Text Size ({translationFontSize}px)
+            Translation Font Size ({translationFontSize}px)
           </label>
           <input
             type="range"
