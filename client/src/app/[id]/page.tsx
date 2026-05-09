@@ -106,5 +106,3 @@ export default async function SurahDetailPage({ params, searchParams }: PageProp
   );
 }
 
-
-export const dynamic = 'force-dynamic'; 
