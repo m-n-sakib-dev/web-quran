@@ -33,10 +33,12 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  return Array.from({ length: 114 }, (_, i) => ({
+  const surahs = Array.from({ length: 114 }, (_, i) => ({
     id: (i + 1).toString(),
   }));
+  return [...surahs, { id: 'search' }];
 }
+
 
 async function getSurahDetails(id: string): Promise<SurahDetails | null> {
   try {
