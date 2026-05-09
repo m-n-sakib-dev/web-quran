@@ -36,7 +36,7 @@ export async function generateStaticParams() {
   const surahs = Array.from({ length: 114 }, (_, i) => ({
     id: (i + 1).toString(),
   }));
-  return [...surahs, { id: 'search' }];
+  return [...surahs];
 }
 
 
