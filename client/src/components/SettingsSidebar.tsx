@@ -1,9 +1,14 @@
 "use client";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect, useState, ChangeEvent } from "react";
 
-export default function SettingsSidebar({ isOpen, onClose }) {
+interface SettingsSidebarProps {
+  onClose?: () => void;
+}
+
+
+export default function SettingsSidebar({ onClose }: SettingsSidebarProps) {
   const {
     arabicFont,
     setArabicFont,
@@ -13,8 +18,7 @@ export default function SettingsSidebar({ isOpen, onClose }) {
     setTranslationFontSize,
   } = useSettingsStore();
 
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
     setMounted(true);
@@ -24,56 +28,55 @@ export default function SettingsSidebar({ isOpen, onClose }) {
 
   return (
     <div
-      className={`fixed inset-y-0 right-0 w-72 shadow-2xl transform ${isOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 ease-in-out p-6 z-50 bg-white`}
+      className="px-6"
     >
       <div className="flex justify-between items-center mb-8">
-        <h2 className="text-xl font-bold">Settings</h2>
-        <button onClick={onClose} className="p-2 rounded-full cursor-pointer">
+        <h2 className="text-xl font-bold">Font Settings</h2>
+        <button onClick={onClose} className="p-2 lg:hidden rounded-full cursor-pointer" type="button">
           ✕
         </button>
       </div>
 
       <div className="space-y-6">
-        {/* Font Selection */}
+
         <div>
           <label className="block mb-2 font-medium">Arabic Font</label>
           <select
             value={arabicFont}
-            onChange={(e) => setArabicFont(e.target.value)}
-            className="w-full p-2 border rounded "
+            onChange={(e: ChangeEvent<HTMLSelectElement>) => setArabicFont(e.target.value)}
+            className="w-full p-2 border rounded"
           >
-            <option value="">Amiri (Classic)</option>
+            <option value="font-amiri">Amiri (Classic)</option>
             <option value="font-noto">Noto Naskh (Modern)</option>
           </select>
         </div>
 
-        {/* Font Size Sliders */}
+
         <div>
           <label className="block mb-2 font-medium">
-            Arabic Text Size ({arabicFontSize}px)
+            Arabic Font Size ({arabicFontSize}px)
           </label>
           <input
             type="range"
             min="20"
-            max="40"
+            max="50"
             value={arabicFontSize}
-            onChange={(e) => setArabicFontSize(e.target.value)}
-            className="w-full cursor-pointer"
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setArabicFontSize(Number(e.target.value))}
+            className="w-full cursor-pointer accent-primary1"
           />
         </div>
 
         <div>
           <label className="block mb-2 font-medium">
-            English Text Size ({translationFontSize}px)
+            Translation Font Size ({translationFontSize}px)
           </label>
           <input
             type="range"
             min="16"
             max="30"
             value={translationFontSize}
-            onChange={(e) => setTranslationFontSize(e.target.value)}
-            className="w-full cursor-pointer"
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setTranslationFontSize(Number(e.target.value))}
+            className="w-full cursor-pointer accent-primary1"
           />
         </div>
       </div>

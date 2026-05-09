@@ -3,6 +3,7 @@
 A modern, full-stack Quranic application built with **Next.js 15**, **Express.js**, and **MySQL**. This project was developed as a technical assessment, focusing on performance (SSG), state management (Zustand), and professional UI/UX standards.
 
 ## 🚀 Live Demo
+
 **Frontend & API:** [Web Quran](https://web-quran-one.vercel.app/)
 
 ---
@@ -24,18 +25,21 @@ A modern, full-stack Quranic application built with **Next.js 15**, **Express.js
 ## 🛠️ Tech Stack
 
 **Frontend:**
+
 - **Framework:** Next.js 15 (App Router)
 - **Styling:** Tailwind CSS v4, DaisyUI
 - **State Management:** Zustand
 - **Theme:** next-themes
 
 **Backend:**
+
 - **Runtime:** Node.js
 - **Framework:** Express.js
 - **Database:** MySQL (Hosted on Aiven)
 - **ORM/Driver:** mysql2 (Connection Pooling)
 
 **Deployment:**
+
 - **Platform:** Vercel (Monorepo setup for Frontend + Serverless Functions)
 
 ---
@@ -56,3 +60,4 @@ web-quran/
 │   └── src/utils/        # API Base Configuration
 ├── vercel.json           # Deployment Configuration
 └── README.md
+```

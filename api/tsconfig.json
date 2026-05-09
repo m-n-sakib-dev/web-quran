@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "verbatimModuleSyntax": true, // এটা রাখতে চাইলে উপরের ২টা NodeNext হওয়া বাধ্যতামূলক
+    "esModuleInterop": true,
+    "target": "ESNext",
+    "allowJs": true,
+    "skipLibCheck": true
+  }
+}
