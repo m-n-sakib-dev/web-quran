@@ -39,7 +39,6 @@ async function getSurahDetails(id: string): Promise<SurahDetails | null> {
     if (!res.ok) return null;
     return res.json();
   } catch (error) {
-    console.error("Fetch error:", error);
     return null;
   }
 }
@@ -52,7 +51,7 @@ export default async function SurahDetailPage({ params }: PageProps) {
   if (!surah || !surah.info) {
     return (
       <div className="text-center p-10 text-red-500">
-        Surah not found or API error.
+        Surah not found or API error. {`${API_BASE_URL}/api/surah/${id}`}
       </div>
     );
   }
