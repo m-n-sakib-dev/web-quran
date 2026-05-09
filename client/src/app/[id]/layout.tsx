@@ -21,7 +21,7 @@ export default function SurahLayout({ children }: SurahLayoutProps) {
                 <div className="flex-grow p-4 md:px-8 lg:px-4 md:py-4">
                     <div className="w-full flex items-start">
 
-                        <div className="leftbar sticky top-20 w-1/5 h-[calc(100vh-80px)] overflow-y-auto custom-scrollbar hidden lg:block">
+                        <div className="leftbar sticky top-20 w-1/4 h-[calc(100vh-80px)] overflow-y-auto custom-scrollbar hidden lg:block">
                             <SurahList />
                         </div>
 
@@ -29,7 +29,7 @@ export default function SurahLayout({ children }: SurahLayoutProps) {
                             {children}
                         </div>
 
-                        <div className="rightbar sticky top-20 w-1/5 h-full overflow-y-auto hidden lg:block">
+                        <div className="rightbar sticky top-20 w-1/4 h-full overflow-y-auto hidden lg:block">
                             <SettingsSidebar />
                         </div>
                     </div>

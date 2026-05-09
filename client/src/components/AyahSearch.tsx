@@ -83,7 +83,7 @@ export default function AyahSearch({ info, ayahs, id }: AyahSearchProps) {
                 <div className="mt-6">
                     {filteredAyahs.length > 0 ? (
                         filteredAyahs.map((ayah) => (
-                            <div className={`py-4 border-b border-gray-200 flex ${ayah.audio_link == currentPlayingUrl ? "bg-gray-200" : ""}  px-4`} key={ayah.number_in_surah}>
+                            <div className={`py-4  border-b border-[var(--foreground)]/10 flex ${ayah.audio_link == currentPlayingUrl ? "bg-[var(--foreground)]/10 rounded-xl" : ""}  px-4`} key={ayah.number_in_surah}>
                                 <div className="">
                                     <p className="text-primary1">{id}:{ayah.number_in_surah}</p>
                                     <button

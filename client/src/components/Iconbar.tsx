@@ -28,7 +28,7 @@ export default function Iconbar() {
     return (
         <>
 
-            <nav className="flex flex-row lg:flex-col lg:justify-between justify-center h-full z-50 h-full py-4">
+            <nav className="bg-[var(--background)]/10 dark:bg-[var(--background)]/90 flex flex-row lg:flex-col lg:justify-between justify-center h-full z-50 h-full py-4">
                 <div className="lg:mx-auto hidden lg:block">
                     <Link href="/" className="">
                         <Icon icon="material-symbols-light:menu-book-rounded" className="text-3xl text-primary1 my-auto" />

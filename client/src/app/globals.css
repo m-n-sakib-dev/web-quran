@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Naskh+Arabic:wght@400..700&display=swap');
 @import "tailwindcss";
-@plugin "daisyui";
+
 
 
 :root {
@@ -10,9 +10,12 @@
   --primary: #43A047;
 }
 
+@variant dark (&:where(.dark, .dark *));
+
+
 .dark {
   --background: #0a0a0a;
-  --foreground: #ededed;
+  --foreground: #dddddd;
   --primary: #43A047;
 }
 
@@ -22,14 +25,12 @@ body {
   transition: background-color 0.3s ease;
 }
 
-/* Tailwind v4 theme mapping */
 @theme {
   --color-background: var(--background);
   --color-primary1: var(--primary);
   --color-foreground: var(--foreground);
 }
 
-/* Arabic Font Classes */
 .font-amiri {
   font-family: 'Amiri', serif;
 }
@@ -38,7 +39,7 @@ body {
   font-family: 'Noto Naskh Arabic', serif;
 }
 
-/* Basic style to read quran */
+
 [dir="rtl"] {
   line-height: 1;
   word-spacing: 4px;
