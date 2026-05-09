@@ -13,12 +13,20 @@ interface Ayah {
     audio_link: string;
 }
 
-interface AyahSearchProps {
-    ayahs: Ayah[];
+interface SurahInfo {
+    name_ar: string;
+    name_en: string;
+    type: string;
 }
 
-export default function AyahSearch({ ayahs }: AyahSearchProps) {
+interface SurahDetailsProps {
+    info: SurahInfo;
+    ayahs: Ayah[];
+    id: number;
+}
 
+export default function SurahDetails({ info, ayahs, id }: SurahDetailsProps) {
+    const [searchTerm, setSearchTerm] = useState<string>("");
     const total_ayahs = ayahs.length;
 
     const [currentPlayingUrl, setCurrentPlayingUrl] = useState<string | null>(null);
@@ -28,9 +36,8 @@ export default function AyahSearch({ ayahs }: AyahSearchProps) {
         const audio = new Audio(url);
         audio.play();
     };
-    const handlePlayPause = (index: number) => {
-
-        const url = ayahs[index].audio_link;
+    const handlePlayPause = (number_in_surah: number) => {
+        const url = ayahs[number_in_surah - 1].audio_link;
         if (currentPlayingUrl !== url) {
             if (audioRef.current) {
                 audioRef.current.pause();
@@ -39,7 +46,7 @@ export default function AyahSearch({ ayahs }: AyahSearchProps) {
             audioRef.current = new Audio(url);
             audioRef.current.play();
             setCurrentPlayingUrl(url);
-            if (index + 1 < total_ayahs) audioRef.current.onended = () => handlePlayPause(index + 1);
+            if (number_in_surah + 1 < total_ayahs) audioRef.current.onended = () => handlePlayPause(number_in_surah + 1);
             else audioRef.current.onended = () => setCurrentPlayingUrl(null);
         }
         else {
@@ -49,17 +56,28 @@ export default function AyahSearch({ ayahs }: AyahSearchProps) {
     };
     return (
         <>
-
             <div className="overflow-hidden">
-                <div className="text-center ">Total {total_ayahs} Ayah found</div>
+                <div className="flex md:justify-between px-8 justify-center">
+                    <div className="w-1/3 hidden md:block">
+
+                        {info.type == "Madinah" ? <img className="h-20" src="https://quranmazid.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmadinah.d27df76f.png&w=750&q=75" alt="" />
+                            : <img className="h-20" src="https://quranmazid.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmakkah.a06c3e3e.png&w=828&q=75" alt="" />}
+                    </div>
+                    <div className="text-center">
+                        <div className="text-center text-[34px] ">{info.name_en}</div>
+                        <div className="text-center text-md text-gray-500">Ayah-{total_ayahs}, {info.type}</div>
+                    </div>
+                    <div className="w-1/4 h-16  bg-no-repeat bg-center bg-contain px-8 my-auto hidden md:block bg-[url('https://quranmazid.com/_next/static/media/bismillah.2a2f3d14.svg')]"></div>
+                </div>
+
                 <div className="mt-6">
                     {ayahs.length > 0 ? (
-                        ayahs.map((ayah, index) => (
-                            <div className={`py-4  border-b border-[var(--foreground)]/10 flex ${ayah.audio_link == currentPlayingUrl ? "bg-[var(--foreground)]/10 rounded-xl" : ""}  px-4`} key={index}>
+                        ayahs.map((ayah) => (
+                            <div className={`py-4  border-b border-[var(--foreground)]/10 flex ${ayah.audio_link == currentPlayingUrl ? "bg-[var(--foreground)]/10 rounded-xl" : ""}  px-4`} key={ayah.number_in_surah}>
                                 <div className="">
-                                    <p className="text-primary1">{ayah.surah_id}:{ayah.number_in_surah}</p>
+                                    <p className="text-primary1 font-medium">{ayah.surah_id}:{ayah.number_in_surah}</p>
                                     <button
-                                        onClick={() => handlePlayPause(index)}
+                                        onClick={() => handlePlayPause(ayah.number_in_surah)}
                                         className="cursor-pointer transition"
                                     >
                                         {currentPlayingUrl === ayah.audio_link ? <Icon

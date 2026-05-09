@@ -14,7 +14,7 @@ export const getSurahDetails = async (req: Request, res: Response): Promise<void
     const { id } = req.params;
     try {
         const [rows] = await db.query(`
-            SELECT a.number_in_surah, a.text, ae.data, ae2.data as audio_link 
+            SELECT a.surah_id,a.number_in_surah, a.text, ae.data, ae2.data as audio_link 
             FROM ayahs a, ayah_edition ae, ayah_edition ae2   
             WHERE a.id = ae.ayah_id AND ae.edition_id = 20 
             AND a.surah_id = ? AND a.id = ae2.ayah_id AND ae2.edition_id = 112
@@ -35,9 +35,10 @@ export const serchAyahFromTranslation = async (req: Request, res: Response): Pro
     const { text } = req.params;
     try {
         const [rows] = await db.query(`
-            SELECT a.number_in_surah, a.text, ae.data 
+            SELECT a.surah_id,a.number_in_surah, a.text, ae.data, ae2.data as audio_link
             FROM ayahs a
             JOIN ayah_edition ae ON a.id = ae.ayah_id
+            JOIN ayah_edition ae2 ON a.id = ae2.ayah_id AND ae2.edition_id = 112
             WHERE ae.edition_id = 20 
             AND (ae.data LIKE CONCAT('%', ?, '%') OR a.text LIKE CONCAT('%', ?, '%'))
         `, [text, text]);
