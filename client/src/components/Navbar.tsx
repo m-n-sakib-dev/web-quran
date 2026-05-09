@@ -23,12 +23,6 @@ export default function Navbar({ surahLishtSidebar }: NavbarProps) {
         setIsLargeScreen(window.innerWidth >= 1024);
 
 
-        if (window.location.pathname === "/") {
-            setIsHomePage(true);
-        } else {
-            setIsHomePage(false);
-        }
-
     }, []);
 
     return (
