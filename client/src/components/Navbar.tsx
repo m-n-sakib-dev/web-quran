@@ -6,6 +6,7 @@ import SurahListWrapper from "./SurahListWrapper";
 import { useEffect } from "react";
 import { Icon } from "@iconify/react";
 import { useSettingsStore } from "@/store/useSettingsStore";
+import SearchBar from "./SearchBar";
 
 
 interface NavbarProps {
@@ -16,6 +17,7 @@ interface NavbarProps {
 export default function Navbar({ surahLishtSidebar }: NavbarProps) {
     const [isRightSidebarOpen, setRightSidebarOpen] = useState<boolean>(false);
     const [isLeftSidebarOpen, setLeftSidebarOpen] = useState<boolean>(false);
+    const [isSearchbarOpen, setSearchbarOpen] = useState<boolean>(false);
     const [isLargeScreen, setIsLargeScreen] = useState<boolean>(false);
     const [isHomePage, setIsHomePage] = useState<boolean>(false);
     const { theme, toggleTheme } = useSettingsStore();
@@ -51,7 +53,15 @@ export default function Navbar({ surahLishtSidebar }: NavbarProps) {
                 )}
 
                 <div className="flex gap-2 items-center">
+                    <button
+                        onClick={() => setSearchbarOpen(true)}
+                        className="bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-primary1 p-2 rounded-full transition-all cursor-pointer text-xl"
+                        title="Search Ayah"
+                    >
+                        <Icon icon="material-symbols-light:search" className="text-primary1" />
+                    </button>
                     {mounted && (
+
                         <button
                             onClick={toggleTheme}
                             className="bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 p-2 rounded-full transition-all cursor-pointer text-xl"
@@ -63,7 +73,9 @@ export default function Navbar({ surahLishtSidebar }: NavbarProps) {
                                 <Icon icon="material-symbols-light:dark-mode" className="text-gray-700" />
                             )}
                         </button>
+
                     )}
+
                     <div className="lg:hidden">
                         <button
                             onClick={() => setRightSidebarOpen(true)}
@@ -103,6 +115,29 @@ export default function Navbar({ surahLishtSidebar }: NavbarProps) {
                     onClose={() => setRightSidebarOpen(false)}
                 />
             </div>)}
+            {isSearchbarOpen && (
+                <>
+                    {/* ১. ব্যাকড্রপ/Overlay - এটি পুরো স্ক্রিন ঝাপসা করে দিবে */}
+                    <div
+                        className="fixed inset-0 z-990 bg-black/50 backdrop-blur-sm"
+                        onClick={() => setSearchbarOpen(false)}
+                    />
+
+                    {/* ২. সার্চবার কন্টেইনার - এটি স্ক্রিনের মাঝখানে থাকবে */}
+                    <div className="fixed inset-0 z-999 flex items-center justify-center p-4 pointer-events-none">
+                        <div
+                            className="w-full max-w-2xl bg-[var(--background)] dark:bg-[#121212] md:rounded-2xl shadow-2xl pointer-events-auto"
+                        >
+                            <SearchBar onClose={() => setSearchbarOpen(false)} />
+                        </div>
+                    </div>
+                </>
+            )}
+
+
+
+
+
         </>
     );
 }
