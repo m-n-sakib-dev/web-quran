@@ -67,6 +67,9 @@ export default async function SurahDetailPage({ params, searchParams }: PageProp
   let surah = null;
   let searchAyah = null;
   if (id === 'search') {
+    if (!search_text) {
+      return <div className="text-center p-10 text-2xl font-medium ">Please enter a search term.</div>;
+    }
     searchAyah = await getSearchAyah(search_text);
     console.log(searchAyah);
     if (!searchAyah) {
@@ -102,3 +105,6 @@ export default async function SurahDetailPage({ params, searchParams }: PageProp
     </div>
   );
 }
+
+
+export const dynamic = 'force-dynamic'; 
