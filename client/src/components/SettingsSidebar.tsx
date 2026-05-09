@@ -38,7 +38,7 @@ export default function SettingsSidebar({ onClose }: SettingsSidebarProps) {
       </div>
 
       <div className="space-y-6">
-        {/* Font Selection */}
+
         <div>
           <label className="block mb-2 font-medium">Arabic Font</label>
           <select
@@ -46,12 +46,12 @@ export default function SettingsSidebar({ onClose }: SettingsSidebarProps) {
             onChange={(e: ChangeEvent<HTMLSelectElement>) => setArabicFont(e.target.value)}
             className="w-full p-2 border rounded"
           >
-            <option value="">Amiri (Classic)</option>
+            <option value="font-amiri">Amiri (Classic)</option>
             <option value="font-noto">Noto Naskh (Modern)</option>
           </select>
         </div>
 
-        {/* Font Size Sliders - Note the Number() conversion */}
+
         <div>
           <label className="block mb-2 font-medium">
             Arabic Font Size ({arabicFontSize}px)
