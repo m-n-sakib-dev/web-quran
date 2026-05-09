@@ -22,10 +22,6 @@ interface PageProps {
 }
 
 
-
-
-
-
 async function getSearchAyah(text: string): Promise<SearchDetails | null> {
     try {
         const res = await fetch(`${API_BASE_URL}/api/ayah/${encodeURIComponent(text)}`, { cache: "no-store" });
@@ -49,10 +45,6 @@ export default async function SearchPage({ searchParams }: PageProps) {
             );
         }
     }
-
-
-
-
 
     return (
         <div className="">
