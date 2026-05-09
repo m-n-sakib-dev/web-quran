@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import SurahList from "@/components/SurahList";
+import Iconbar from "@/components/Iconbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,11 +30,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased custom-scrollbar`}
     >
-      <body className="min-h-full flex flex-col pt-16">
-        <Navbar surahLishtSidebar={<SurahList />} />
-        <main className="flex-grow p-4 md:px-8 md:py-4">
-          {children}
-        </main>
+      <body className="w-full">
+        {children}
       </body>
     </html>
   );
