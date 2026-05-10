@@ -46,7 +46,7 @@ export default function SettingsSidebar({ onClose }: SettingsSidebarProps) {
             onChange={(e: ChangeEvent<HTMLSelectElement>) => setArabicFont(e.target.value)}
             className="w-full p-2 border-2 rounded-lg border-[var(--foreground)]/50 "
           >
-            <option value="font-amiri">Amiri (Classic)</option>
+            <option value="">Amiri (Classic)</option>
             <option value="font-noto">Noto Naskh (Modern)</option>
           </select>
         </div>
