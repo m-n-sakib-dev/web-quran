@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { useRouter,useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 // 1. Define the Surah data structure
 interface Surah {
@@ -16,14 +16,12 @@ interface SurahRowProps {
 
 export default function SurahRow({ surah }: SurahRowProps) {
   const router = useRouter();
-  const [id, setId] = useState<string | undefined>("");
+  const params = useParams();
+  const [id, setId] = useState<string | undefined>(params.id as string);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const currentId = window.location.pathname.split("/").pop();
-      setId(currentId);
-    }
-  }, []);
+      setId(params.id as string);
+  }, params.id ? [params.id] : []);
   const handleRowClick = (): void => {
     router.push(`/${surah.id}`);
   };
@@ -31,7 +29,7 @@ export default function SurahRow({ surah }: SurahRowProps) {
   return (
     <div
       onClick={handleRowClick}
-      className={`hover:bg-primary1/10 cursor-pointer transition-colors flex justify-between group my-1 py-2 px-4 rounded-md  border border-[var(--foreground)]/10 ${id == surah.id ? "bg-primary1/20" : ""}`}
+      className={`hover:bg-primary1/20 cursor-pointer transition-colors flex justify-between group my-1 py-2 px-4 rounded-md  border border-[var(--foreground)]/10 ${id == surah.id ? "bg-primary1/20" : ""}`}
     >
       <div className="flex gap-3">
         <div className="relative flex size-[32px] items-center justify-center group my-auto">
