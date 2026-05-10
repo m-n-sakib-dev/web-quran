@@ -117,13 +117,11 @@ export default function Navbar({ surahLishtSidebar }: NavbarProps) {
             </div>)}
             {isSearchbarOpen && (
                 <>
-                    {/* ১. ব্যাকড্রপ/Overlay - এটি পুরো স্ক্রিন ঝাপসা করে দিবে */}
+                 
                     <div
-                        className="fixed inset-0 z-990 bg-black/50 backdrop-blur-sm"
+                        className="fixed inset-0 z-999 bg-black/50 backdrop-blur-sm"
                         onClick={() => setSearchbarOpen(false)}
                     />
-
-                    {/* ২. সার্চবার কন্টেইনার - এটি স্ক্রিনের মাঝখানে থাকবে */}
                     <div className="fixed inset-0 z-999 flex items-center justify-center p-4 pointer-events-none">
                         <div
                             className="w-full max-w-2xl bg-[var(--background)] dark:bg-[#121212] md:rounded-2xl shadow-2xl pointer-events-auto"
@@ -133,11 +131,6 @@ export default function Navbar({ surahLishtSidebar }: NavbarProps) {
                     </div>
                 </>
             )}
-
-
-
-
-
         </>
     );
 }

@@ -21,7 +21,7 @@ export default function SurahRow({ surah }: SurahRowProps) {
 
   useEffect(() => {
       setId(params.id as string);
-  }, params.id ? [params.id] : []);
+  }, params.id ? [params.id] : ["1"]);
   const handleRowClick = (): void => {
     router.push(`/${surah.id}`);
   };
@@ -29,11 +29,11 @@ export default function SurahRow({ surah }: SurahRowProps) {
   return (
     <div
       onClick={handleRowClick}
-      className={`hover:bg-primary1/20 cursor-pointer transition-colors flex justify-between group my-1 py-2 px-4 rounded-md  border border-[var(--foreground)]/10 ${id == surah.id ? "bg-primary1/20" : ""}`}
+      className={`hover:bg-primary1/20 cursor-pointer transition-colors flex justify-between group my-1 py-2 px-4 rounded-lg   border-2 border-[var(--foreground)]/15 ${id == surah.id ? "bg-primary1/20" : ""}`}
     >
       <div className="flex gap-3">
         <div className="relative flex size-[32px] items-center justify-center group my-auto">
-          <div className={`absolute inset-0 rotate-45 rounded-md  transition-colors ${id == surah.id ? "bg-primary1" : "bg-gray-200 dark:bg-[var(--foreground)]/20 group-hover:bg-primary1"}`}></div>
+          <div className={`absolute  inset-0 rotate-45 rounded-md  transition-colors ${id == surah.id ? "bg-primary1" : "bg-gray-200 dark:bg-[var(--foreground)]/20 group-hover:bg-primary1"}`}></div>
           <span className={`relative text-xs font-medium  group-hover:text-white ${id == surah.id ? "text-white" : ""}`}>
             {surah.number}
           </span>
