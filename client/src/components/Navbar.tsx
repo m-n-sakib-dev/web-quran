@@ -98,7 +98,7 @@ export default function Navbar({ surahLishtSidebar }: NavbarProps) {
 
             {!isLargeScreen && (<div
                 className={`fixed inset-y-0 left-0 w-full md:w-92 shadow-2xl transform ${isLeftSidebarOpen ? "translate-x-0" : "-translate-x-full"
-                    } transition-transform duration-300 ease-in-out p-6 z-70 bg-[var(--background)] dark:bg-[#121212] md:rounded-r-2xl`}
+                    } transition-transform duration-300 ease-in-out px-6 z-70 bg-[var(--background)] dark:bg-[#121212] md:rounded-r-2xl`}
             >
                 <SurahListWrapper
                     onClose={() => setLeftSidebarOpen(false)}
@@ -117,7 +117,7 @@ export default function Navbar({ surahLishtSidebar }: NavbarProps) {
             </div>)}
             {isSearchbarOpen && (
                 <>
-                 
+
                     <div
                         className="fixed inset-0 z-999 bg-black/50 backdrop-blur-sm"
                         onClick={() => setSearchbarOpen(false)}
